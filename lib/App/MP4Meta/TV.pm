@@ -75,7 +75,7 @@ sub apply_meta {
         # parse the filename for the title, season and episode
         ( $tags{show_title}, $tags{season}, $tags{episode} ) =
           $self->_parse_filename($file, $directories);
-        unless ( $tags{show_title} && $tags{season} && $tags{episode} ) {
+        unless ( $tags{show_title} && defined $tags{season} && $tags{episode} ) {
             return "Error: could not parse the filename for $path";
         }
     }
