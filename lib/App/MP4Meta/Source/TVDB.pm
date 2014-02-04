@@ -37,8 +37,15 @@ sub get_tv_episode {
     my ( $self, $args ) = @_;
 
     $self->SUPER::get_tv_episode($args);
+    
+    my $title = $args->{show_title};
+    my $year = '';
+    if ( $title =~ s/\s+\((\d{4})\)\s*$// ) 
+    {
+        $year = $1;
+    }
 
-    my $series_list = $self->{tvdb}->search( $args->{show_title} );
+    my $series_list = $self->{tvdb}->search( $title, $year );
 
     die 'no series found' unless @$series_list;
 
