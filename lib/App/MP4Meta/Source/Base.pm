@@ -29,7 +29,7 @@ sub get_tv_episode {
     my ( $self, $args ) = @_;
 
     die 'no title'   unless $args->{show_title};
-    die 'no season'  unless $args->{season};
+    die 'no season'  unless defined $args->{season};
     die 'no episode' unless $args->{episode};
 }
 
